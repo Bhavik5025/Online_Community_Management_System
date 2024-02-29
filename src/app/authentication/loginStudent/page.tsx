@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import axios from "axios";
 import Link from "next/link";
@@ -7,8 +7,10 @@ import { useRouter } from "next/navigation";
 
 function Login() {
     const Router = useRouter();
+
     function handleFormSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault();
+
         const formData: { [key: string]: any } = {};
         const formElements = event.currentTarget.elements as HTMLFormControlsCollection;
 
@@ -18,10 +20,11 @@ function Login() {
                 formData[element.id] = (element as HTMLInputElement).value;
             }
         }
+
         axios.post('https://online-community-system.onrender.com/login', formData)
             .then(response => {
                 if (response.data.message) {
-                    localStorage.setItem("student",formData["email"]);
+                    localStorage.setItem("student", formData["email"]);
                     alert(response.data.message);
                     Router.push("/student/");
                 } else {
@@ -31,11 +34,12 @@ function Login() {
             .catch(error => {
                 console.log(error);
             });
-        console.log('User Data:', formData);
 
+        console.log('User Data:', formData);
     }
+
     return (
-        <div className="w-full lg:w-7/12  bg-blue-100 dark:bg-gray-700 p-5 rounded-lg lg:rounded-l-none overflow-y-auto">
+        <div className="w-full lg:w-7/12 bg-blue-100 dark:bg-gray-700 p-5 rounded-lg lg:rounded-l-none overflow-y-auto">
             <h3 className="py-4 text-2xl text-center text-gray-800 dark:text-white">Login to Your Account</h3>
             <form className="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded" onSubmit={handleFormSubmit}>
                 <div className="mb-4">
@@ -71,21 +75,14 @@ function Login() {
                     </button>
                 </div>
                 <hr className="mb-6 border-t" />
-                {/* <div className="text-center">
-                    <a className="inline-block text-sm text-blue-500 dark:text-blue-500 align-baseline hover:text-blue-800" href="#">
-                        Forgot Password?
-                    </a>
-                </div> */}
                 <div className="text-center">
                     <Link className="inline-block text-sm text-blue-500 dark:text-blue-500 align-baseline hover:text-blue-800" href="/authentication/register">
-                        Don't have an account? Sign up!
+                        Don&apos;t have an account? Sign up!
                     </Link>
                 </div>
             </form>
         </div>
-
-
     );
 }
-export default Login;
 
+export default Login;
