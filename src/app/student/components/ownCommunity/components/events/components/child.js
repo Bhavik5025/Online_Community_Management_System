@@ -17,18 +17,25 @@ const EventListComponent = ({ event }) => {
       setCurrentImageIndex((currentImageIndex - 1 + length) % length);
     }
   };
-  const getDetails = async ()=>{
-    axios.post("https://online-community-system.onrender.com/getdetails", {
-      email: localStorage.getItem("student"),
-      event:event.event_id
-  }).then((response) => {
-      alert("Students List SuccessFully Sent")
-    //console.log(response.data.Data);
-
-}).catch((error)=>{
-  alert(error)
-})
-  }
+  const getDetails = async () => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      axios.post("https://online-community-system.onrender.com/getdetails", {
+        email: localStorage.getItem("student"),
+        event: event.event_id,
+      })
+      .then((response) => {
+        alert("Students List Successfully Sent");
+        //console.log(response.data.Data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    } else {
+      // Handle the case where localStorage is not available (e.g., server-side)
+      console.error("localStorage is not available");
+    }
+  };
+  
   return (
     <div
       key={event.event_id}
