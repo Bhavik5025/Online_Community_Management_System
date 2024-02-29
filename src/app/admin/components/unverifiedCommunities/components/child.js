@@ -99,7 +99,8 @@ const Child = ({ data, removeCommunityByName }) => {
           <div className="p-8 md:w-2/3">
             <div className="uppercase tracking-wide text-indigo-500 font-bold text-2xl">{data.community_name}</div>
             <a href="#" className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
-              <span className="font-bold">Owner's Email :</span>{data.owner_email}
+            <span className="font-bold">Owner&apos;s Email :</span>{data.owner_email}
+
             </a>
             <p className="mt-2 text-slate-500">
               <span className="font-bold">Description :</span>{data.description}

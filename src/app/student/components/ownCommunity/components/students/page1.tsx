@@ -9,7 +9,7 @@ interface Student {
     email : string;
 }
 
-export default function requests() {
+export default function Requests() {
     const [searchTerm, setSearchTerm] = useState('');
     const [studentsData, setStudentsData] = useState<Student[]>([]);
     const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);

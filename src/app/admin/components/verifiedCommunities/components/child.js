@@ -70,7 +70,7 @@ const Child = ({ data, removeCommunityByName }) => {
         </div>
         <div className="md:w-2/3 p-8 flex flex-col">
           <div className="uppercase tracking-wide text-indigo-500 font-bold text-2xl">{data.community_name}</div>
-          <span className="font-bold">Owner's Email :{data.owner_email}</span>
+          <span className="font-bold">Owner&apos;s Email :{data.owner_email}</span>
           <p className="mt-2 text-slate-500">
             <span className="font-bold">Description :</span>{data.description}
           </p>
