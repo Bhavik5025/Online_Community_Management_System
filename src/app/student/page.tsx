@@ -196,7 +196,8 @@ export default function RootLayout() {
     //     router.push("/authentication/loginStudent");
     // }
 
-  useEffect(() => {
+   
+    useEffect(() => {
         if (typeof window !== 'undefined') {
             const studentToken = localStorage.getItem('student');
             if (!studentToken) {
@@ -206,46 +207,39 @@ export default function RootLayout() {
     }, [router]);
 
     useEffect(() => {
-        const handleResize = () => {
-          if (window.innerWidth <= 768) {
-              setIsOpen(false);
-          } else {
-              setIsOpen(true);
-          }
-      };
-    
-      handleResize(); // Call the resize handler once to set the initial state
-    
-      window.addEventListener('resize', handleResize);
-    
-      return () => window.removeEventListener('resize', handleResize);
-      }, []);
-    
-    function dropdown() {
-        const submenu = document.querySelector("#submenu");
-        const arrow = document.querySelector("#arrow");
+        if (typeof window !== 'undefined') {
+            const handleResize = () => {
+                if (window.innerWidth <= 768) {
+                    setIsOpen(false);
+                } else {
+                    setIsOpen(true);
+                }
+            };
 
-        if (submenu && arrow) {
-            submenu.classList.toggle("hidden");
-            arrow.classList.toggle("rotate-0");
+            handleResize();
+
+            window.addEventListener('resize', handleResize);
+
+            return () => window.removeEventListener('resize', handleResize);
         }
-    }
+    }, []); // empty dependency array ensures the effect runs only once
 
-    dropdown();
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const submenu = document.querySelector("#submenu");
+            const arrow = document.querySelector("#arrow");
 
-    function openSidebar() {
-        const sidebar = document.querySelector(".sidebar");
-
-        if (sidebar) {
-            sidebar.classList.toggle("hidden");
+            if (submenu && arrow) {
+                submenu.classList.toggle("hidden");
+                arrow.classList.toggle("rotate-0");
+            }
         }
-    }
+    }, []); // empty dependency array ensures the effect runs only once
 
-    function handleLogout(){
+    function handleLogout() {
         localStorage.removeItem('student');
         router.replace("/");
     }
-
     return (
         <html>
             <head>
