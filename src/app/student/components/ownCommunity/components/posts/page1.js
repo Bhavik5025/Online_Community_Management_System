@@ -4,7 +4,7 @@ import Data from "./components/data";
 import Child from "./components/child";
 import axios from "axios";
 import Image from 'next/image'
-
+import Cookies from "js-cookie";
 const Posts = () => {
   const [showModal, setShowModal] = useState(false);
   const [temp, setImg] = useState(undefined);

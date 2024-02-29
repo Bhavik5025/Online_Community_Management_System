@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Data from "./data1";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const Child = ({ post, index }) => {
   const [expandedPost, setExpandedPost] = useState(false);
