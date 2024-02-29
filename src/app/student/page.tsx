@@ -239,7 +239,7 @@ export default function RootLayout() {
 
     function handleLogout() {
         localStorage.removeItem('student');
-        sessionStorage.removeItem('student')l
+        sessionStorage.removeItem('student');
         router.replace("/");
     }
     return (
