@@ -1,0 +1,33 @@
+{
+  "name": "online_community_system",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@dotlottie/player-component": "^2.7.6",
+    "@react-hook/media-query": "^1.1.1",
+    "axios": "^1.6.5",
+    "next": "^14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-lottie-player": "^1.5.6",
+    "react-router-dom": "^6.22.1",
+    "tw-elements": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
