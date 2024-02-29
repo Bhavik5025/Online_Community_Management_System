@@ -406,10 +406,10 @@ export default function RootLayout() {
   
     useEffect(() => {
       if (typeof window !== 'undefined') {
-        const storedStudent = localStorage.getItem('student');
-        if (storedStudent === null) {
-          router.push("/authentication/loginStudent");
-        }
+        // const storedStudent = localStorage.getItem('student');
+        // if (storedStudent === null) {
+        //   router.push("/authentication/loginStudent");
+        // }
   
         const handleResize = () => {
           if (window.innerWidth <= 768) {
@@ -463,10 +463,10 @@ export default function RootLayout() {
   
     function handleLogout() {
       if (typeof window !== 'undefined') {
-        const storedStudent = localStorage.getItem('student');
-        if (storedStudent !== null) {
-          localStorage.removeItem('student');
-        }
+        // const storedStudent = localStorage.getItem('student');
+        // if (storedStudent !== null) {
+        //   localStorage.removeItem('student');
+        // }
       }
       sessionStorage.removeItem('student');
       router.replace("/");
