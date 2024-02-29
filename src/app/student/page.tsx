@@ -203,27 +203,28 @@ export default function RootLayout() {
 
 // ...
 
-    useEffect(() => {
+useEffect(() => {
+    if (typeof window !== 'undefined') {
         if (sessionStorage.getItem('student') === null) {
             router.push("/authentication/loginStudent");
-          }
-      
-        if (typeof window !== 'undefined') {
-            const handleResize = () => {
-                if (window.innerWidth <= 768) {
-                    setIsOpen(false);
-                } else {
-                    setIsOpen(true);
-                }
-            };
-
-            handleResize();
-
-            window.addEventListener('resize', handleResize);
-
-            return () => window.removeEventListener('resize', handleResize);
         }
-    }, []); // empty dependency array ensures the effect runs only once
+
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setIsOpen(false);
+            } else {
+                setIsOpen(true);
+            }
+        };
+
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }
+}, []);
+ // empty dependency array ensures the effect runs only once
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -242,6 +243,7 @@ export default function RootLayout() {
         sessionStorage.removeItem('student');
         router.replace("/");
     }
+    
     return (
         <html>
             <head>

@@ -11,7 +11,8 @@ import Students from './components/students/page1';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout() {
-  const communityName = typeof window !== 'undefined' ? localStorage.getItem('ownCommunity') : null;
+    const communityName =
+    typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('ownCommunity') : null;
   const [navbar, setNavbar] = useState('requests');
 
   const renderComponent = () => {
