@@ -12,6 +12,7 @@ const Child = ({ post, index }) => {
 
 
   useEffect(() => {
+    
     console.log("New comment:", newComment);
   }, [newComment]);
 

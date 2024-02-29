@@ -10,9 +10,10 @@ const EventListComponent = () => {
   const [eventsData, setEventsData] = useState([]);
   const eventsEndRef = useRef(null);
   useEffect(() => {
-    if (localStorage.getItem("student") === null) {
+    if (typeof window !== "undefined" && localStorage.getItem("student") === null) {
       router.push("/authentication/loginStudent");
     }
+
     const fetchData = async () => {
       try {
         let data = await Data(localStorage.getItem("ownCommunity"));
