@@ -1,3 +1,4 @@
+'use client';
 // Import necessary dependencies
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
