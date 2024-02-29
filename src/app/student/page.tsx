@@ -192,19 +192,16 @@ export default function RootLayout() {
         }
     };
 
-    // if (localStorage.getItem('student') === null) {
-    //     router.push("/authentication/loginStudent");
-    // }
+    if (sessionStorage.getItem('student') === null) {
+        router.push("/authentication/loginStudent");
+    }
 
    
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const studentToken = localStorage.getItem('student');
-            if (!studentToken) {
-                router.push("/authentication/loginStudent");
-            }
-        }
-    }, [router]);
+    // ...
+
+
+
+// ...
 
     useEffect(() => {
         if (typeof window !== 'undefined') {

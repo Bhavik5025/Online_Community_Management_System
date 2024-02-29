@@ -25,6 +25,8 @@ function Login() {
             .then(response => {
                 if (response.data.message) {
                     localStorage.setItem("student", formData["email"]);
+                    
+                    sessionStorage.setItem("student", formData["email"]);
                     alert(response.data.message);
                     Router.push("/student/");
                 } else {
