@@ -17,7 +17,7 @@
 //     const [studentsData, setStudentsData] = useState<Student[]>([]);
 //     const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
 //     const router = useRouter();
-//     if (localStorage.getItem('admin') === null) {
+//     if (Cookies.get('admin') === null) {
 //         router.replace("/authentication/loginAdmin");
 //     }
 
@@ -93,7 +93,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import Not_Found from '../unverifiedCommunities/Not_Found';
-
+import Cookies from 'js-cookie';
 interface Student {
     name: string;
     status: boolean;
@@ -140,7 +140,7 @@ function Students() {
         setFilteredStudents(updatedFilteredStudents);
     };
 
-    if (localStorage.getItem('admin') === null) {
+    if (Cookies.get('admin') === null) {
         router.replace("/authentication/loginAdmin");
         return null; // If not logged in, redirect and don't render the rest of the component
     }

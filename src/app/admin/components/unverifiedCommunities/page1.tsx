@@ -5,6 +5,7 @@ import Child from "./components/child";
 import Welcome from './components/welcome';
 import { useRouter } from "next/navigation";
 import Image from 'next/image'
+import Cookies from 'js-cookie';
 import NotFound from './Not_Found';
 interface Community {
     community_name: string
@@ -14,7 +15,7 @@ function Community() {
     const [communitiesData, setCommunitiesData] = useState<Community[]>([]);
     const [filteredCommunities, setFilteredCommunities] = useState<Community[]>([]);
     const router = useRouter();
-    if (localStorage.getItem('admin') === null) {
+    if (Cookies.get('admin') === null) {
         router.replace("/authentication/loginAdmin");
     }
 

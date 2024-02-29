@@ -4,6 +4,7 @@ import Data from "./component2/data";
 import Child from "./component2/child";
 import axios from "axios";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 const Posts = () => {
   const [showModal, setShowModal] = useState(false);
@@ -13,12 +14,12 @@ const Posts = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (localStorage.getItem("student") === null) {
+    if (Cookies.get('student') === null) {
       router.push("/authentication/loginStudent");
     }
     const fetchData = async () => {
       try {
-        let data = await Data(localStorage.getItem("otherCommunity"));
+        let data = await Data(Cookies.get("otherCommunity"));
         setPosts(data);
         setIsLoading(false);
       } catch (error) {
@@ -60,8 +61,8 @@ const Posts = () => {
       .then((data) => {
         console.log(data);
         newPost.post_image = data.url;
-        newPost.user_email = localStorage.getItem("student");
-        newPost.community_id = localStorage.getItem("ownCommunity");
+        newPost.user_email = Cookies.get('student');
+        newPost.community_id = Cookies.get("ownCommunity");
         console.log(newPost);
 
         axios

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Events from './components/events';
 import Posts from './components/posts';
-
+import Cookies from 'js-cookie';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout() {
@@ -18,7 +18,7 @@ export default function RootLayout() {
   useEffect(() => {
     // Check if localStorage is available (for client-side rendering)
     if (typeof window !== 'undefined') {
-      const storedCommunityName = localStorage.getItem('otherCommunity');
+      const storedCommunityName = Cookies.get('otherCommunity');
       setCommunityName(storedCommunityName || 'Default Community');
     }
   }, []);

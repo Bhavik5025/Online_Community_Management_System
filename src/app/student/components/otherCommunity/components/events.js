@@ -3,18 +3,18 @@ import React, { useState, useEffect, useRef } from "react";
 import Data from "./component1/data";
 import Child from "./component1/child";
 import axios from "axios";
-
+import Cookies from "js-cookie";
 const EventListComponent = () => {
   const [isAddEventModalOpen, setAddEventModalOpen] = useState(false);
   const [eventsData, setEventsData] = useState([]);
   const eventsEndRef = useRef(null);
   useEffect(() => {
-    if (localStorage.getItem("student") === null) {
+    if (Cookies.get('student') === null) {
       router.push("/authentication/loginStudent");
     }
     const fetchData = async () => {
       try {
-        let data = await Data(localStorage.getItem("otherCommunity"));
+        let data = await Data(Cookies.get("otherCommunity"));
         setEventsData(data);
       } catch (error) {
         console.error("Error fetching data:", error);

@@ -18,7 +18,7 @@ const EventListComponent = ({ event }) => {
     }
   };
   const getDetails = async () => {
-    if (typeof window !== 'undefined' && window.localStorage) {
+   
       axios.post("https://online-community-system.onrender.com/getdetails", {
         email: Cookies.get('student'),
         event: event.event_id,
@@ -30,10 +30,7 @@ const EventListComponent = ({ event }) => {
       .catch((error) => {
         alert(error);
       });
-    } else {
-      // Handle the case where localStorage is not available (e.g., server-side)
-      console.error("localStorage is not available");
-    }
+    
   };
   
   return (

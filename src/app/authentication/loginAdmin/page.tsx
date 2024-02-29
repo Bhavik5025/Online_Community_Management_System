@@ -21,7 +21,7 @@ function Login() {
             .then(response => {
                 if (response.data.correct) {
                     alert("Welcome, sir");
-                    localStorage.setItem('admin','yes');
+                    // localStorage.setItem('admin','yes');
                     Cookies.set('admin', 'yes');
                     Router.push("/admin");
                 } else {

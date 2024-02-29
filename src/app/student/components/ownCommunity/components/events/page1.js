@@ -16,7 +16,7 @@ const EventListComponent = () => {
 
     const fetchData = async () => {
       try {
-        let data = await Data(localStorage.getItem("ownCommunity"));
+        let data = await Data(Cookies.get("ownCommunity"));
         setEventsData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -131,7 +131,7 @@ const EventListComponent = () => {
         console.log(urls);
         let addEvent = newEvent;
         addEvent.event_image = urls;
-        addEvent.community_id = localStorage.getItem("ownCommunity");
+        addEvent.community_id = Cookies.get("ownCommunity");
 
         axios
           .post("https://online-community-system.onrender.com/addEvent", addEvent)

@@ -5,7 +5,7 @@
 //   const { community_name, owner_email, image } = community;
 //   const owner = owner_email ;
 //   const name = community_name;
-//   let email = localStorage.getItem("student");
+//   let email = Cookies.get('student');
 
 //   const sendJoinRequest = async () => {
 //     try {
@@ -52,12 +52,12 @@
 
 // export default Child;import React from "react";
 import axios from 'axios';
-
+import Cookies from 'js-cookie';
 const Child = ({ community, removeByName }) => {
   const { community_name, owner_email, image, description } = community;
   const owner = owner_email;
   const name = community_name;
-  let email = localStorage.getItem("student");
+  let email = Cookies.get('student');
 
   const sendJoinRequest = async () => {
     try {

@@ -25,11 +25,11 @@ function Login() {
         axios.post('https://online-community-system.onrender.com/login', formData)
             .then(response => {
                 if (response.data.message) {
-                    localStorage.setItem("student", formData["email"]);
-                    Cookies.set('student', 'formData');
-                    sessionStorage.setItem("student", formData["email"]);
+                    // localStorage.setItem("student", formData["email"]);
+                    Cookies.set('student', formData["email"]);
+                    // sessionStorage.setItem("student", formData["email"]);
                     alert(response.data.message);
-                    Router.push("/student/");
+                    Router.push("/student");
                 } else {
                     alert(response.data.error);
                 }

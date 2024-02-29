@@ -7,8 +7,9 @@ import Events from './components/events/page1';
 import Posts from './components/posts/page1';
 import Requests from './components/requests/page1';
 import Students from './components/students/page1';
-
+import Cookies from 'js-cookie';
 const inter = Inter({ subsets: ['latin'] });
+
 
 export default function RootLayout() {
     
@@ -37,8 +38,8 @@ const [communityName, setCommunityName] = useState<string | null>(null);
   useEffect(() => {
     // Check if window is defined before accessing localStorage
     // if (typeof window !== 'undefined' && window.localStorage) {
-    //     const storedCommunityName = localStorage.getItem('ownCommunity');
-    //     setCommunityName(storedCommunityName || null); // Use null if storedCommunityName is null
+        const storedCommunityName = Cookies.get('ownCommunity');
+        setCommunityName(storedCommunityName || null); // Use null if storedCommunityName is null
     //   }
     // Fetch additional data or perform other useEffect logic
 

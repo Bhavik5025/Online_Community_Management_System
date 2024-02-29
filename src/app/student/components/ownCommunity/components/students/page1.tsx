@@ -4,7 +4,7 @@ import Data from "./components/data";
 import Child from "./components/child";
 import Image from 'next/image'
 import Not_Found from '@/app/admin/components/unverifiedCommunities/Not_Found';
-
+import Cookies from "js-cookie";
 interface Student {
     email : string;
 }
@@ -13,7 +13,7 @@ export default function Requests() {
     const [searchTerm, setSearchTerm] = useState('');
     const [studentsData, setStudentsData] = useState<Student[]>([]);
     const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
-    const communityName = localStorage.getItem("ownCommunity");
+    const communityName = Cookies.get("ownCommunity");
     useEffect(() => {
         const fetchData = async () => {
             try {

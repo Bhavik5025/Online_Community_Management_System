@@ -17,7 +17,7 @@ const Posts = () => {
     }
     const fetchData = async () => {
       try {
-        let data = await Data(localStorage.getItem("ownCommunity"));
+        let data = await Data(Cookies.get("ownCommunity"));
         setPosts(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -58,7 +58,7 @@ const Posts = () => {
         console.log(data);
         newPost.post_image = data.url;
         newPost.user_email = Cookies.get('student');
-        newPost.community_id = localStorage.getItem("ownCommunity");
+        newPost.community_id = Cookies.get("ownCommunity");
         console.log(newPost);
 
         axios

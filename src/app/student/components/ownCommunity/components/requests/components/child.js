@@ -1,10 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import Cookies from 'js-cookie';
 export default function Product(props) {
   let dummy = props.data;
-  const communityName = localStorage.getItem("ownCommunity");
+  const communityName = Cookies.get("ownCommunity");
   const handleAccept = async () => {
     try {
       await axios.patch(`https://online-community-system.onrender.com/joinCommunity/${dummy.email}`, { newCommunityId : communityName });

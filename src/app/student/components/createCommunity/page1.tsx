@@ -11,9 +11,9 @@
 // export default function student() {
 //     const [image, setImage] = useState(undefined);
 //     const router = useRouter();
-//     let email = localStorage.getItem("student");
+//     let email = Cookies.get('student');
 
-//     if (localStorage.getItem('student') === null) {
+//     if (Cookies.get('student') === null) {
 //         router.push("/authentication/loginStudent");
 //     }
 
@@ -157,7 +157,7 @@ import axios from "axios";
 import Cd from "./Create_Community_Lottie";
 import { FormEvent, useState } from "react";
 import { useRouter } from 'next/navigation';
-
+import Cookies from "js-cookie";
 function handleRegistration() {
     console.log('Registration button clicked');
 }
@@ -166,9 +166,9 @@ export default function Student() {
     const [image, setImage] = useState(undefined);
     const router = useRouter();
     const [image1, setImage1] = useState<string | null>(null);
-    let email = localStorage.getItem("student");
+    let email = Cookies.get('student');
 
-    if (localStorage.getItem('student') === null) {
+    if (Cookies.get('student') === null) {
         router.push("/authentication/loginStudent");
     }
 

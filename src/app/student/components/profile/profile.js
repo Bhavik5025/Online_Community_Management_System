@@ -1,10 +1,10 @@
 import { use, useEffect, useState } from "react"
 import axios from 'axios';
-
+import Cookies from "js-cookie";
 export default function Profile()
 {
     const [student, setStudent] = useState();
-const studentId = localStorage.getItem("student");
+const studentId = Cookies.get("student");
     const [name,setName]=useState();
     const [email,setEmail]=useState();
     const [image,setImage]=useState();
@@ -17,7 +17,7 @@ const studentId = localStorage.getItem("student");
 
 const getStudentDetails = async () => {
   try {
-    const requestsDetails = await axios.get(`https://online-community-system.onrender.com/getStudentInfo/${localStorage.getItem("student")}`);
+    const requestsDetails = await axios.get(`https://online-community-system.onrender.com/getStudentInfo/${Cookies.get("student")}`);
     console.log(requestsDetails.data);
     setStudent(requestsDetails.data);
     setEmail(requestsDetails.data.email);

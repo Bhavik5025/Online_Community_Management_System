@@ -4,7 +4,7 @@
 
 // export default function Product(props) {
 //   let dummy = props.data;
-//   const communityName = localStorage.getItem("ownCommunity");
+//   const communityName = Cookies.getItem("ownCommunity");
 
 //   const handleDelete = async () => {
 //     try {
@@ -117,10 +117,11 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function Product(props) {
   let dummy = props.data;
-  const communityName = localStorage.getItem("ownCommunity");
+  const communityName = Cookies.get("ownCommunity");
 
   const handleDelete = async () => {
     try {

@@ -5,7 +5,7 @@ import Child from "./components/child"
 import { useRouter } from 'next/navigation';
 import Image from 'next/image'
 import Not_Found from '@/app/admin/components/unverifiedCommunities/Not_Found';
-
+import Cookies from 'js-cookie';
 interface Community {
     _id: string,
     community_name: string,
@@ -16,10 +16,10 @@ export default function Community(obj : any) {
     const [communitiesData, setCommunitiesData] = useState<Community[]>([]);
     const [filteredCommunities, setFilteredCommunities] = useState<Community[]>([]);
     const router = useRouter();
-    const email = localStorage.getItem("student");
+    const email = Cookies.get('student');
 
     useEffect(() => {
-        if (localStorage.getItem('student') === null) {
+        if (Cookies.get('student') === null) {
             router.push("/authentication/loginStudent");
         }
         const fetchData = async () => {

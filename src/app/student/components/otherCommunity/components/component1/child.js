@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import Cookies from "js-cookie";
 const EventListComponent = ({ event }) => {
   const [readMore, setReadMore] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -14,7 +14,7 @@ const EventListComponent = ({ event }) => {
 
   useEffect(() => {
     setCurrentAttendees(event.current_attendees);
-    const email = localStorage.getItem("student");
+    const email = Cookies.get('student');
     const arr = event.joined_students || [];
 
     if (arr.includes(email)) {
@@ -35,7 +35,7 @@ const EventListComponent = ({ event }) => {
     if(event.max_attendees == currentAttendees){
       alert("No space are remaining");
     }
-    const email = localStorage.getItem("student");
+    const email = Cookies.get('student');
     const eventId = event.event_id;
 
     const url = "https://online-community-system.onrender.com/addStudentToEvent/" + eventId;
@@ -51,7 +51,7 @@ const EventListComponent = ({ event }) => {
   };
 
   const leaveEvent = () => {
-    const email = localStorage.getItem("student");
+    const email = Cookies.get('student');
     const eventId = event.event_id;
     const url = "https://online-community-system.onrender.com/removeStudentFromEvent/" + eventId;
     axios.patch(url, { student_email : email}).then((response) => {

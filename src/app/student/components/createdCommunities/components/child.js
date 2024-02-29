@@ -1,14 +1,14 @@
 'use client';
 import React from "react";
 import { useRouter } from "next/navigation";
-
+import Cookies from "js-cookie";
 const Child = ({ community, changeNavbar }) => {
   const { community_name, owner_email, image } = community;
   const owner = owner_email ;
   const name = community_name;
   const router = useRouter();
   function handleClick(e){
-    localStorage.setItem("ownCommunity",community_name);
+    Cookies.set("ownCommunity",community_name);
     // router.push("/student/components/ownCommunity/");
     changeNavbar("ownCommunity");
   }

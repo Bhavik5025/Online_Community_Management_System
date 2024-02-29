@@ -237,7 +237,7 @@ useEffect(() => {
     }
 }, []); // empty dependency array ensures the effect runs only once
 function handleLogout(){
-            localStorage.removeItem('student');
+           
             Cookies.remove('student')
             router.replace("/");
         }
