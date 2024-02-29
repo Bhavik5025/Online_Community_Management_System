@@ -51,7 +51,7 @@ const Child = ({ post, index }) => {
   const handleAddEvent = (event) =>{
     let obj = {};
     obj.post_id = post.post_id;
-    obj.user_email = localStorage.getItem("student");
+    obj.user_email = Cookies.get('student');
     obj.comment_message = newComment;
     console.log("final comment : ",newComment);
     axios.post("https://online-community-system.onrender.com/createComment",obj).then((response) => {

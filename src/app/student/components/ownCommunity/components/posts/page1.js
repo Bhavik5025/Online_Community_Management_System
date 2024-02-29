@@ -12,7 +12,7 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    if (localStorage.getItem("student") === null) {
+    if (Cookies.get('student') === null) {
       router.push("/authentication/loginStudent");
     }
     const fetchData = async () => {
@@ -57,7 +57,7 @@ const Posts = () => {
       .then((data) => {
         console.log(data);
         newPost.post_image = data.url;
-        newPost.user_email = localStorage.getItem("student");
+        newPost.user_email = Cookies.get('student');
         newPost.community_id = localStorage.getItem("ownCommunity");
         console.log(newPost);
 

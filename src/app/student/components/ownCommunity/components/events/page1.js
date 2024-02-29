@@ -4,13 +4,13 @@ import Data from "./components/data";
 import Child from "./components/child";
 import "./event.css";
 import axios from "axios";
-
+import Cookies from "js-cookie";
 const EventListComponent = () => {
   const [isAddEventModalOpen, setAddEventModalOpen] = useState(false);
   const [eventsData, setEventsData] = useState([]);
   const eventsEndRef = useRef(null);
   useEffect(() => {
-    if (typeof window !== "undefined" && localStorage.getItem("student") === null) {
+    if (typeof window !== "undefined" && Cookies.get('student') === null) {
       router.push("/authentication/loginStudent");
     }
 

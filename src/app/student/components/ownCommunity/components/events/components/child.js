@@ -20,7 +20,7 @@ const EventListComponent = ({ event }) => {
   const getDetails = async () => {
     if (typeof window !== 'undefined' && window.localStorage) {
       axios.post("https://online-community-system.onrender.com/getdetails", {
-        email: localStorage.getItem("student"),
+        email: Cookies.get('student'),
         event: event.event_id,
       })
       .then((response) => {
