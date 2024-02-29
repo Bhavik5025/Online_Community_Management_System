@@ -31,7 +31,8 @@ const Child = ({ community, removeByName }) => {
   </div>
       <div class="md:w-2/3 p-8 flex flex-col">
         <div class="uppercase tracking-wide text-indigo-500 font-bold text-2xl">{name}</div>
-          <span class="font-bold">Owner's Email :{owner_email}</span>
+        <span class="font-bold">Owner&apos;s Email: {owner_email}</span>
+
         
         <p class="mt-2 text-slate-500">
           <span class="font-bold">Description :</span>{description}

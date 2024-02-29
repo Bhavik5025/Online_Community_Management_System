@@ -68,7 +68,6 @@
 import React from "react";
 import axios from "axios";
 
-
 const Child = ({ data, removeCommunityByName }) => {
   const handleAccept = async () => {
     try {
@@ -92,33 +91,37 @@ const Child = ({ data, removeCommunityByName }) => {
 
   return (
     <>
-    <div class="w-full font-poppins max-w-md mx-auto hover:scale-105 transition-transform duration-500 shadow-md bg-white rounded-xl  overflow-hidden md:max-w-3xl lg:max-w-4xl mt-4">
- <div class="md:flex">
-    <div class="md:w-1/3 w-auto flex items-center justify-center">
-  <img class="w-full h-full object-contain ml-4 mr-4" src={data.image} alt="Modern building architecture"/>
-</div>
-      <div class="p-8 md:w-2/3">
-        <div class="uppercase tracking-wide  text-indigo-500 font-bold text-2xl">{data.community_name}</div>
-        <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"><span className="font-bold">Owner's Email :</span>{data.owner_email}</a>
-        <p class="mt-2 text-slate-500"><span className="font-bold">Description :</span>{data.description}</p>
-      </div>
-      <div className="flex flex-col justify-center md:w-30 mr-2 ml-2">
-           <button
-            className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 focus:outline-none focus:shadow-outline-green transition-transform transform hover:scale-110 duration-300 ease-in-out"
-            onClick={handleAccept}
-          >
-            Accept
-          </button>
-          <button
-            className="text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-10 py-3 text-center mb-2 mt-1"
-            onClick={handleReject}
-          >
-            Reject
-          </button>
+      <div className="w-full font-poppins max-w-md mx-auto hover:scale-105 transition-transform duration-500 shadow-md bg-white rounded-xl  overflow-hidden md:max-w-3xl lg:max-w-4xl mt-4">
+        <div className="md:flex">
+          <div className="md:w-1/3 w-auto flex items-center justify-center">
+            <img className="w-full h-full object-contain ml-4 mr-4" src={data.image} alt="Modern building architecture"/>
+          </div>
+          <div className="p-8 md:w-2/3">
+            <div className="uppercase tracking-wide text-indigo-500 font-bold text-2xl">{data.community_name}</div>
+            <a href="#" className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+              <span className="font-bold">Owner's Email :</span>{data.owner_email}
+            </a>
+            <p className="mt-2 text-slate-500">
+              <span className="font-bold">Description :</span>{data.description}
+            </p>
+          </div>
+          <div className="flex flex-col justify-center md:w-30 mr-2 ml-2">
+            <button
+              className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 focus:outline-none focus:shadow-outline-green transition-transform transform hover:scale-110 duration-300 ease-in-out"
+              onClick={handleAccept}
+            >
+              Accept
+            </button>
+            <button
+              className="text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-10 py-3 text-center mb-2 mt-1"
+              onClick={handleReject}
+            >
+              Reject
+            </button>
+          </div>
         </div>
-    </div>
-  </div>
-  </>
+      </div>
+    </>
   );
 };
 

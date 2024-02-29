@@ -11,7 +11,7 @@ interface Community {
     community_name: string,
 }
 
-export default function community(obj : any) {
+export default function Community(obj : any) {
     const [searchTerm, setSearchTerm] = useState('');
     const [communitiesData, setCommunitiesData] = useState<Community[]>([]);
     const [filteredCommunities, setFilteredCommunities] = useState<Community[]>([]);

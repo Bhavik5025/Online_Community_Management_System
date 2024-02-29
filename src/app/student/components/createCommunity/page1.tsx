@@ -162,7 +162,7 @@ function handleRegistration() {
     console.log('Registration button clicked');
 }
 
-export default function student() {
+export default function Student() {
     const [image, setImage] = useState(undefined);
     const router = useRouter();
     const [image1, setImage1] = useState<string | null>(null);
