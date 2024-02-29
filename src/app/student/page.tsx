@@ -192,9 +192,9 @@ export default function RootLayout() {
         }
     };
 
-    if (sessionStorage.getItem('student') === null) {
-        router.push("/authentication/loginStudent");
-    }
+    // if (sessionStorage.getItem('student') === null) {
+    //     router.push("/authentication/loginStudent");
+    // }
 
    
     // ...
@@ -204,6 +204,10 @@ export default function RootLayout() {
 // ...
 
     useEffect(() => {
+        if (sessionStorage.getItem('student') === null) {
+            router.push("/authentication/loginStudent");
+          }
+      
         if (typeof window !== 'undefined') {
             const handleResize = () => {
                 if (window.innerWidth <= 768) {
