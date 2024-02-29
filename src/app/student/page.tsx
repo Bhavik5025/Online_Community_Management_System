@@ -202,7 +202,6 @@ export default function RootLayout() {
 
 
 // ...
-
 useEffect(() => {
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('student') === null) {
@@ -223,31 +222,29 @@ useEffect(() => {
 
         return () => window.removeEventListener('resize', handleResize);
     }
-}, []);
- // empty dependency array ensures the effect runs only once
+}, []); // empty dependency array ensures the effect runs only once
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const submenu = document.querySelector("#submenu");
-            const arrow = document.querySelector("#arrow");
+useEffect(() => {
+    if (typeof window !== 'undefined') {
+        const submenu = document.querySelector("#submenu");
+        const arrow = document.querySelector("#arrow");
 
-            if (submenu && arrow) {
-                submenu.classList.toggle("hidden");
-                arrow.classList.toggle("rotate-0");
-            }
+        if (submenu && arrow) {
+            submenu.classList.toggle("hidden");
+            arrow.classList.toggle("rotate-0");
         }
-    }, []); // empty dependency array ensures the effect runs only once
-
-    function handleLogout() {
-        if (typeof window !== 'undefined') {
-            if (localStorage.getItem('student') !== null) {
-                
-        localStorage.removeItem('student');
-            }
-        }
-        sessionStorage.removeItem('student');
-        router.replace("/");
     }
+}, []); // empty dependency array ensures the effect runs only once
+
+function handleLogout() {
+    if (typeof window !== 'undefined') {
+        if (localStorage.getItem('student') !== null) {
+            localStorage.removeItem('student');
+        }
+    }
+    sessionStorage.removeItem('student');
+    router.replace("/");
+}
     
     return (
         <html>
