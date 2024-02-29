@@ -1,7 +1,7 @@
 'use client';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './ownCommunity.css';
 import Events from './components/events/page1';
 import Posts from './components/posts/page1';
@@ -11,9 +11,41 @@ import Students from './components/students/page1';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout() {
-    const communityName =
-    typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('ownCommunity') : null;
-  const [navbar, setNavbar] = useState('requests');
+    
+//     const communityName =
+//     typeof window !== 'undefined' && window.localStorage
+//       ? localStorage.getItem('ownCommunity')
+//       : null;
+//   const [navbar, setNavbar] = useState('requests');
+
+//   const renderComponent = () => {
+//     switch (navbar) {
+//       case 'events':
+//         return <Events />;
+//       case 'posts':
+//         return <Posts />;
+//       case 'requests':
+//         return <Requests />;
+//       case 'students':
+//         return <Students />;
+//       default:
+//         return null;
+//     }
+const [navbar, setNavbar] = useState('requests');
+const [communityName, setCommunityName] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Check if window is defined before accessing localStorage
+    if (typeof window !== 'undefined' && window.localStorage) {
+        const storedCommunityName = localStorage.getItem('ownCommunity');
+        setCommunityName(storedCommunityName || null); // Use null if storedCommunityName is null
+      }
+    // Fetch additional data or perform other useEffect logic
+
+    return () => {
+      // Cleanup or additional logic if needed
+    };
+  }, []); // Empty dependency array ensures that the effect runs only once on mount
 
   const renderComponent = () => {
     switch (navbar) {
