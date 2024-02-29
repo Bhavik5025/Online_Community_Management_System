@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
-function login() {
+function Login() {
     const Router = useRouter();
     function handleFormSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault();
@@ -87,5 +87,5 @@ function login() {
 
     );
 }
-export default login;
+export default Login;
 

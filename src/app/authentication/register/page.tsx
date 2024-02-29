@@ -3,13 +3,12 @@ import { FormEvent, useState } from "react";
 
 import axios from 'axios';
 import Link from "next/link";
-import { useRouter } from 'next/router';
 function handleRegistration() {
     console.log('Registration button clicked');
     // ... rest of your registration logic
 }
 
-function register() {
+function Register() {
     // const router = useRouter();
     const [image, setImage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
@@ -456,7 +455,7 @@ function register() {
 
     );
 }
-export default register;
+export default Register;
 
 function parseString(arg0: number): unknown {
     throw new Error("Function not implemented.");
