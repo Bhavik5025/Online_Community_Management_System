@@ -3,7 +3,7 @@ import axios from "axios";
 import Link from "next/link";
 import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
-
+import Cookies from 'js-cookie';
 function Login() {
     const Router = useRouter();
     function handleFormSubmit(event: FormEvent<HTMLFormElement>): void {
@@ -22,6 +22,7 @@ function Login() {
                 if (response.data.correct) {
                     alert("Welcome, sir");
                     localStorage.setItem('admin','yes');
+                    Cookies.set('admin', 'yes');
                     Router.push("/admin");
                 } else {
                     alert("Email or password incorrect");

@@ -36,10 +36,10 @@ const [communityName, setCommunityName] = useState<string | null>(null);
 
   useEffect(() => {
     // Check if window is defined before accessing localStorage
-    if (typeof window !== 'undefined' && window.localStorage) {
-        const storedCommunityName = localStorage.getItem('ownCommunity');
-        setCommunityName(storedCommunityName || null); // Use null if storedCommunityName is null
-      }
+    // if (typeof window !== 'undefined' && window.localStorage) {
+    //     const storedCommunityName = localStorage.getItem('ownCommunity');
+    //     setCommunityName(storedCommunityName || null); // Use null if storedCommunityName is null
+    //   }
     // Fetch additional data or perform other useEffect logic
 
     return () => {

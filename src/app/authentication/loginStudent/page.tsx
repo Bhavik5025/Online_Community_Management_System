@@ -3,6 +3,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { FormEvent } from "react";
+import Cookies from 'js-cookie';
 import { useRouter } from "next/navigation";
 
 function Login() {
@@ -25,7 +26,7 @@ function Login() {
             .then(response => {
                 if (response.data.message) {
                     localStorage.setItem("student", formData["email"]);
-                    
+                    Cookies.set('student', 'formData');
                     sessionStorage.setItem("student", formData["email"]);
                     alert(response.data.message);
                     Router.push("/student/");
