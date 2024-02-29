@@ -468,7 +468,7 @@ export default function RootLayout() {
         //   localStorage.removeItem('student');
         // }
       }
-      sessionStorage.removeItem('student');
+    //   sessionStorage.removeItem('student');
       router.replace("/");
     }
   
