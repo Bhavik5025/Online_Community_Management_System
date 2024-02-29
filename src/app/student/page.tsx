@@ -205,7 +205,7 @@ export default function RootLayout() {
 
 useEffect(() => {
     if (typeof window !== 'undefined') {
-        if (sessionStorage.getItem('student') === null) {
+        if (localStorage.getItem('student') === null) {
             router.push("/authentication/loginStudent");
         }
 
@@ -239,7 +239,12 @@ useEffect(() => {
     }, []); // empty dependency array ensures the effect runs only once
 
     function handleLogout() {
+        if (typeof window !== 'undefined') {
+            if (localStorage.getItem('student') !== null) {
+                
         localStorage.removeItem('student');
+            }
+        }
         sessionStorage.removeItem('student');
         router.replace("/");
     }
