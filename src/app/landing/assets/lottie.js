@@ -8,16 +8,18 @@ export default function Lottie() {
   return (
     
     <>
-    
+   <div className=" w-full max-w-xl lg:max-w-none">
       <dotlottie-player
-        className="ml-10 w-[553px] h-[598px]"
-        src="https://lottie.host/64a5b794-aa83-40d6-8f7c-b15316abd968/UzmH9hX05V.json"
+        className="w-full h-auto lg:w-auto lg:h-auto"
+  src="https://lottie.host/64a5b794-aa83-40d6-8f7c-b15316abd968/UzmH9hX05V.json"
         background="transparent"
         speed="1"
-        style={{ width: "500px", height: "500px" }}
+        
         loop
         autoplay
       ></dotlottie-player>
+      </div>
+
     </>
   );
 }
