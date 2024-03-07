@@ -2,6 +2,8 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import './globals.css';
+
+import { ThemeProvider } from 'next-themes';
 import { redirect } from 'next/navigation';
 
 export default function Home() {
@@ -22,5 +24,6 @@ export default function Home() {
     }
   }, []); // Empty dependency array to run the effect only once
 
-  return <h3>Welcome to our application</h3>;
+  return ( <ThemeProvider enableSystem={true} attribute='class'><h3>Welcome to our application</h3>;
+</ThemeProvider>);
 }
