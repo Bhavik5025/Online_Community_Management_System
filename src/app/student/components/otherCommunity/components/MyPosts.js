@@ -1,11 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Data from "./component2/data";
-import Child from "./component2/child";
+import Data from "./component3/data";
+import Child from "./component3/child";
+import Cookies from "js-cookie";
 import axios from "axios";
 import Image from "next/image";
-import Cookies from "js-cookie";
-const Posts = () => {
+const MyPosts = () => {
+
   const [showModal, setShowModal] = useState(false);
   const [temp, setImg] = useState(undefined);
   const [newPost, setNewPost] = useState({});
@@ -29,7 +30,10 @@ const Posts = () => {
 
     fetchData();
   }, []);
-
+  const handlePostDelete = (postId) => {
+    // Filter out the deleted post from the posts array
+    setPosts(posts.filter((post) => post.post_id !== postId));
+  };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewPost((prevPost) => ({ ...prevPost, [name]: value }));
@@ -60,7 +64,7 @@ const Posts = () => {
       .then((data) => {
         console.log(data);
         newPost.post_image = data.url;
-        newPost.user_email = localStorage.getItem("student");
+        newPost.user_email = Cookies.get("student");
         newPost.community_id = Cookies.get('otherCommunity');
         console.log(newPost);
 
@@ -87,6 +91,7 @@ const Posts = () => {
   };
 
   return (
+   
     <div className="container mx-auto mt-8">
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
@@ -96,6 +101,7 @@ const Posts = () => {
         <div className="text-center ml-96">
           <Image
             src="/assets/noData.png"
+          
             width={500}
             height={500}
             alt="Picture of the author"
@@ -106,7 +112,7 @@ const Posts = () => {
           <h1 className="text-2xl font-bold mb-4">Community Posts</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post, index) => (
-              <Child post={post} key={index} index={index} />
+              <Child post={post} key={index} index={index} onDelete={handlePostDelete} />
             ))}
           </div>
         </>
@@ -231,8 +237,9 @@ const Posts = () => {
         </div>
       )}
     </div>
+
   );
 };
 
-export default Posts;
+export default MyPosts;
 ``;

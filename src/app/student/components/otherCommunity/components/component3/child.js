@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Data from "./data1";
 import axios from "axios";
-import Cookies from "js-cookie";
 
-const Child = ({ post, index,onDelete={handlePostDelete} }) => {
+import "../../../../../admin/components/verifiedCommunities/components/style.css";
+import { Modal } from '../../../../../admin/components/verifiedCommunities/components/child';
+const Child = ({ post, index,onDelete }) => {
   const [expandedPost, setExpandedPost] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const [comments,setComments] = useState([]);
@@ -13,9 +14,7 @@ const Child = ({ post, index,onDelete={handlePostDelete} }) => {
   const [isOpen, setIsOpen] = useState(false)
   const showModal = () => setIsOpen(true)
 
-
   useEffect(() => {
-    
     console.log("New comment:", newComment);
   }, [newComment]);
 
@@ -26,7 +25,17 @@ const Child = ({ post, index,onDelete={handlePostDelete} }) => {
   const handleReadLess = () => {
     setExpandedPost(false);
   };
-
+  const deletePost = (postId) => {
+    axios.delete(`https://online-community-system.onrender.com/deletePost/${postId}`)
+      .then((response) => {
+        
+        alert("Post Deleted Successfully");
+        onDelete(postId);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
   const handleViewComments = () => {
     const fetchData = async () => {
       try {
@@ -54,7 +63,7 @@ const Child = ({ post, index,onDelete={handlePostDelete} }) => {
   const handleAddEvent = (event) =>{
     let obj = {};
     obj.post_id = post.post_id;
-    obj.user_email = Cookies.get('student');
+    obj.user_email = localStorage.getItem("student");
     obj.comment_message = newComment;
     console.log("final comment : ",newComment);
     axios.post("https://online-community-system.onrender.com/createComment",obj).then((response) => {
@@ -71,30 +80,16 @@ const Child = ({ post, index,onDelete={handlePostDelete} }) => {
     })
   }
 
-  const deletePost = (postId) => {
-    axios.delete(`https://online-community-system.onrender.com/deletePost/${postId}`)
-      .then((response) => {
-        
-        alert("Post Deleted Successfully");
-        onDelete(postId);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
-  
-  const openModal = (image) => {
-    setSelectedImage(image);
-    setIsModalOpen(true);
-};
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <>
-    
+    {isOpen && (
+       <Modal
+         src={post.post_image}
+         alt="snow"
+         caption={post.name}
+         onClose={() => setIsOpen(false)}
+       />
+     )}
     <div
       key={index}
       className="bg-white p-6 rounded-md shadow-md transition-transform transform hover:scale-105 h-fit duration-300"
@@ -140,7 +135,7 @@ const Child = ({ post, index,onDelete={handlePostDelete} }) => {
 
         <button
           onClick={handleViewComments}
-          className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 transition"
+          className="bg-blue-500 w-full text-white px-6 py-3 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 transition"
         >
           View Comments
         </button>
@@ -149,6 +144,7 @@ const Child = ({ post, index,onDelete={handlePostDelete} }) => {
   className="text-white w-full bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-10 py-3 text-center mb-2 mt-4 mr-0"
   onClick={() => deletePost(post.post_id)}>Delete
 </button>
+
       {showComments && (
         <div className="fixed inset-0 flex items-center justify-center overflow-auto bg-gray-800 bg-opacity-50">
           <div className="bg-white p-8 rounded-md max-w-md min-h-[300px] relative">
@@ -205,7 +201,7 @@ const Child = ({ post, index,onDelete={handlePostDelete} }) => {
         </div>
       )}
     </div>
-</>
+    </>
   );
 };
 
